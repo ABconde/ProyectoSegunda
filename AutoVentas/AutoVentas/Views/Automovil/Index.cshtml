@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AutoVentas.Models.Automovil>
+
+@{
+    ViewBag.Title = "Listado de Autos";
+    }
+
+<h2>Listado de Autos</h2>
+
+<p>
+        @if(Session["idUsuario"]!= null){
+        <button class="btn btn-default">@Html.ActionLink("Create New", "Create")</button>
+        }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.estado.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marca.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+           @if (Session["idUsuario"] != null)
+{
+    @Html.ActionLink("Edit", "Edit", new { id = item.idAutomovil }, new { @class = "btn btn-primary" });
+
+    @Html.ActionLink("Delete", "Delete", new { id = item.idAutomovil }, new { @class = "btn btn-primary" })
+}
+
+@Html.ActionLink("Details", "Details", new { id = item.idAutomovil }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    <p>
+        @if (Session["idUsuario"] == null)
+        {
+            <button class="btn btn-default">@Html.ActionLink("Ingresar", "Login", "Cuenta")</button>
+        }
+    </p>
+</div>

@@ -1,0 +1,60 @@
+﻿@model AutoVentas.Models.Automovil
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Automovil</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        @if(Model.archivos.Any(f => f.tipo == FileType.Imagen)){
+            <dt>
+                Imagen
+            </dt>
+            <dd>
+                <img src="~/Archivo/ObtenerArchivo?id=@Model.archivos.First(f => f.tipo == FileType.Imagen).idArchivo" alt="Imagen" />
+            </dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marca.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marca.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idAutomovil }) |
+    <button class="btn btn-default" id="but">@Html.ActionLink("Cancelar", "Index")</button>
+</p>

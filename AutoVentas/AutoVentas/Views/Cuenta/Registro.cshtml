@@ -1,0 +1,81 @@
+﻿@model AutoVentas.Models.Usuario
+
+@{
+    ViewBag.Title = "Registro";
+}
+
+<h2>Registro</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Usuario</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @if(ViewBag.mensaje != null){
+            <div class="form-group">
+                <div class="alert-success">
+                    @ViewBag.mensaje
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.nombre, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nombre)
+                @Html.ValidationMessageFor(model => model.nombre)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.correo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.correo)
+                @Html.ValidationMessageFor(model => model.correo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nick, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nick)
+                @Html.ValidationMessageFor(model => model.nick)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contrasenia, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contrasenia)
+                @Html.ValidationMessageFor(model => model.contrasenia)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.confirmarC, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.confirmarC)
+                @Html.ValidationMessageFor(model => model.confirmarC)
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Ingresar", "Login","Cuenta")
+</div>
+
+<script src="~/Scripts/jquery-1.2.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

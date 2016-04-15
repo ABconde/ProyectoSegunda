@@ -1,0 +1,60 @@
+﻿@model AutoVentas.Models.Usuario
+
+@{
+    ViewBag.Title = "Login";
+}
+<center>
+    <h2>Login</h2>
+
+</center>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+           <center>
+             <h4>Usuario</h4>
+               </center>
+                   <hr />
+                   @Html.ValidationSummary(true)
+
+
+
+
+
+                   <div class="form-group">
+                       @Html.LabelFor(model => model.nick, new { @class = "control-label col-md-2" })
+                       <div class="col-md-10">
+                           @Html.EditorFor(model => model.nick)
+                           @Html.ValidationMessageFor(model => model.nick)
+                       </div>
+                   </div>
+
+                   <div class="form-group">
+                       @Html.LabelFor(model => model.contrasenia, new { @class = "control-label col-md-2" })
+                       <div class="col-md-10">
+                           @Html.EditorFor(model => model.contrasenia)
+                           @Html.ValidationMessageFor(model => model.contrasenia)
+                       </div>
+                   </div>
+
+
+
+                   <div class="form-group">
+                       <div class="col-md-offset-2 col-md-10">
+                           <input type="submit" value="Login" class="btn btn-default" />
+                       </div>
+                   </div>
+</div>
+    }
+
+    <div>
+        <button class="btn btn-default">@Html.ActionLink("Registrarme", "Registro", "Cuenta")</button>
+    </div>
+
+    <script src="~/Scripts/jquery-2.2.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
